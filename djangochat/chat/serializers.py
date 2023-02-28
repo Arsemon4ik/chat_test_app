@@ -8,6 +8,12 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MessageListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -33,7 +39,8 @@ class ThreadListSerializer(serializers.ModelSerializer):
 
     def get_last_message(self, instance):
         message = instance.message_set.first()
+        print(message)
         if message:
-            return MessageSerializer(instance=message)
+            return MessageSerializer(instance=message).data
         else:
             return "No messages yet"
