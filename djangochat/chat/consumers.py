@@ -1,23 +1,13 @@
-import base64
 import json
-import secrets
-from datetime import datetime
-
 from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
-from django.core.files.base import ContentFile
-
+from channels.generic.websocket import WebsocketConsumer
 from django.contrib.auth.models import User
 from .models import Message, Thread
 from .serializers import MessageSerializer
 
 
-# class ChatConsumer(AsyncWebsocketConsumer):
-#     print("CONNECTED")
-#     pass
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        print("here")
         self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
         self.room_group_name = f"chat_{self.room_name}"
 

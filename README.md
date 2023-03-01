@@ -18,10 +18,10 @@ Test in Postman
 /start - create thread
 /:thread_id - get thread information
 /thread_messages - get all thread messages
-/delete_thread - delete thread
-/view_message - view message (is_read=True)
-/users - view list of users
-
+/delete_thread - delete thread by id
+/view_message - mark message as read (is_read=True)
+/users - get list of users
+/ - get user's threads with the last message 
 ```
 Connection using websocket (don't forget to use Token in header)
 
